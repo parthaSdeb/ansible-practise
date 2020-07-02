@@ -1,0 +1,24 @@
+-
+  name: dir/file modification
+  hosts: localhost db
+  tasks:
+    - name: Task 1:creating a directory
+      file:
+        path: /root/new_dir
+        state: directory
+
+    - name: Task-2:creating a file inside the directory
+      file:
+        path: /root/new_dir/new_file.txt
+        state: touch
+        owner: root
+        group: root
+        mode: 0775
+
+    - name: task-3:Creating symbolik link
+      file:
+        src: /root/new_dir/new_file.txt
+        dest: /var/tmp/link_new_file.txt
+        owner: root
+        group: root
+        state: link
