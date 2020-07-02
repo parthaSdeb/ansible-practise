@@ -1,0 +1,9 @@
+-
+  name: play 1
+  hosts: web
+  vars:
+    dns_server: 10.1.250.10
+  tasks:
+      - lineinfile:
+          path: /etc/resolv.conf
+          line: 'nameserver {{ dns_server }}'
