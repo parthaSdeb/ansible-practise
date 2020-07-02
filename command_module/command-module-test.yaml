@@ -1,0 +1,15 @@
+-
+  name: Command test
+  hosts: localhost web
+  tasks:
+    - name: execute "date" command as in command module
+      command: date
+
+    - name: view the content of passwd file
+      command: cat /etc/passwd
+
+    - name: view the passwd file
+      command: cat passwd chdir=/etc
+
+    # - name: display resolv.conf file content
+    #   command: mkdir /folder creates=/folder
