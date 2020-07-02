@@ -1,0 +1,33 @@
+-
+  name: Iterating over a list of hashes in looping
+  hosts: db
+  vars:
+    users:
+      - { name: 'testuser1' , groups: 'user1'}
+      - { name: 'testuser2' , groups: 'user1'}
+  tasks:
+    - name: creating multiple users in the system
+      user:
+        name: "{{ item.name }}"
+        # state: present
+        state: absent
+        groups: "{{ item.groups }}"
+
+      loop: "{{ users }}"
+
+# -
+  # name: Iterating over a list of hashes in looping
+  # hosts: db
+  # vars:
+  #   users:
+  #
+  # tasks:
+  #   - name: creating multiple users in the system
+  #     user:
+  #       name: "{{ users.name }}"
+  #       state: present
+  #       groups: "{{ users.groups }}"
+  #
+  #     loop:
+  #       - { name: 'testuser1' , groups: 'user1'}
+  #       - { name: 'testuser2' , groups: 'user1'}
