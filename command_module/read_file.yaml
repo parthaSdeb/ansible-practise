@@ -1,0 +1,15 @@
+-
+  name: read file content
+  hosts: target1
+  tasks:
+    - name: Take input
+      command: cat /root/abc.txt
+      register: readfile
+
+    - name: Show output
+      debug:
+        var: readfile
+
+    - name: show manage nodes info
+      debug:
+        var: ansible_facts
