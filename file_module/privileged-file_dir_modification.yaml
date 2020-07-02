@@ -1,0 +1,18 @@
+-
+  name: 'crate/delete/modify other users file in managed nodes'
+  hosts: db
+  become: Yes
+  become_user: user1
+  tasks:
+    - name: 'task-1: creating a directory inside other user'
+      file:
+        path: /home/user1/new_dir
+        state: directory
+
+    - name: 'task-2: creating file'
+      file:
+        path: /home/user1/new_dir/new_file.txt
+        state: touch
+        owner: user1
+        group: user1
+        mode: 0770
