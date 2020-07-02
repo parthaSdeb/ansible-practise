@@ -1,0 +1,27 @@
+-
+  name: fact gathering
+  hosts: target1
+  #gather_facts is used to gather the information about managed nodes.
+  gather_facts: false
+  tasks:
+    - name: collect managed node info
+      debug:
+        var: ansible_architecture
+
+    - name: gather gather_facts
+      debug:
+        var: ansible_connection
+
+    - name: gather gather_facts
+      debug:
+        var: ansible_distribution
+
+    - name: gather gather_facts
+      debug:
+        var:
+          network
+
+    - name: gathe distribution hostname
+      debug:
+        var:
+          ansible_distribution
