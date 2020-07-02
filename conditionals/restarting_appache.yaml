@@ -1,0 +1,9 @@
+-
+  name: restarting appache
+  hosts: web
+  tasks:
+    - name: restaring httpd
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_facts["distribution"] == "CentOS" and ansible_facts["distribution_major_version"] == '7' and ansible_facts["kernel"] == "3.10.0-1062.el7.x86_64"
