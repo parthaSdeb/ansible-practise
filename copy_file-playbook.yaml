@@ -1,0 +1,8 @@
+-
+  name: copying file from controller to node machine
+  hosts: localhost web 
+  tasks:
+    - name: copying
+      copy:
+        src: /tmp/test-file.txt
+        dest: /tmp/test-file.txt
