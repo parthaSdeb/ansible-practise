@@ -1,0 +1,13 @@
+-
+  name: removing file and directories
+  hosts: localhost db
+  tasks:
+    - name: 'Task-1: Removing symblinks'
+      file:
+        path: /var/tmp/link_new_file.txt
+        state: absent
+
+    - name: 'Task-2: Recursively Removing directories'
+      file:
+        path: /root/new_dir
+        state: absent
