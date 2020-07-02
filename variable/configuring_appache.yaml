@@ -1,0 +1,42 @@
+-
+  name: configuring appache dns_server
+  hosts: web
+  vars:
+    web_package: httpd
+    firewall_package: firewalld
+    web_service: httpd
+    firewall_service: firewalld
+    perl_package: perl
+    rule: http
+
+  tasks:
+    - name: 'Inastall the required {{ web_package }},{{ firewall_package }},{{ perl_package}}'
+      yum:
+        name:
+          - "{{ web_package }}"
+          - "{{ firewall_package }}"
+          - "{{ perl_package }}"
+        state: latest
+
+    - name: 'Start and enable the {{ firewall_service }} service'
+      service:
+          name: "{{ firewall_service }}"
+          enabled: true
+          state: started
+
+    - name: 'Start and enable the {{ web_service }} service'
+      service:
+          name: "{{ web_service }}"
+          enabled: true
+          state: started
+    - name: 'creating conten  in wesite'
+      copy:
+        content: "welcome to the world of sweb content"
+        dest: /var/www/html/index.html
+
+    - name: 'open the port for {{ rule }} '
+      firewalld:
+        service: "{{ rule }}"
+        permanent: true
+        immediate: true
+        state: enabled
