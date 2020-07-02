@@ -1,0 +1,25 @@
+-
+  name: facts gathering
+  hosts: web
+  tasks:
+    - name: Printing connection
+      debug:
+        var: ansible_connection
+
+    - name: Printing ip address
+      debug:
+        var: ansible_default_ipv4
+        # msg: >
+        #   the ipv4 address of {{ ansible_fqdn }} is {{ ansible_default_ipv4.address }}
+
+    - name: Printing hostname
+      debug:
+        var: ansible_host
+
+    - name: Printing kernel name
+      debug:
+        var: ansible_kernel
+
+    - name: Printing distribution name
+      debug:
+        var: ansible_distribution
