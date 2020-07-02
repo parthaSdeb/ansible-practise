@@ -1,0 +1,22 @@
+-
+  name: managing users accounts in linux
+  hosts: web
+  # gather_facts: false
+  # become: Yes
+  # become_user: root
+  tasks:
+    - name: create a user in a server
+      user:
+        name: partha01
+        password: a553288817b7309b83c0dc0e76656779
+        uid: 24195
+        shell: /bin/bash
+        home: /home/partha01
+        group: osboxes
+        append: Yes
+        comment: comment for partha01
+
+    - name:
+      user:
+        name: user1
+        state: absent
