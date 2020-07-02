@@ -1,0 +1,11 @@
+-
+  name: file creating and permission setting
+  hosts: target1
+  tasks:
+    # - name: creating file
+    #   command: touch /root/abc.txt
+
+    - name: setting permission
+      command: chmod 775 /root/abc.txt
+      args:
+        warn: false
