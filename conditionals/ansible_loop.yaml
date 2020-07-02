@@ -1,0 +1,13 @@
+-
+  name: looping in ansible script
+  hosts: db
+  tasks:
+    - name: installing multiple packegaes
+      yum:
+        name: "{{ item }}"
+        state: present
+        # state: absent
+
+      with_items:
+        - httpd
+        - zsh
