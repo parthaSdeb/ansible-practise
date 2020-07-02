@@ -1,0 +1,29 @@
+# -
+#   name: ansible loop testing 2
+#   hosts: db
+#   vars:
+#     user_list:
+#       - testuser1
+#       - testuser2
+#   tasks:
+#     - name: creating multiple users
+#       user:
+#         name: "{{ user_list }}"
+#         state: present
+#
+#       loop: "{{ user_list }}"
+
+-
+  name: ansible loop testing 2
+  hosts: db
+  vars:
+    users:
+      - testuser1
+      - testuser2
+  tasks:
+    - name: create users in the system
+      user:
+        name: "{{ item }}"
+        # state: present
+        state: absent
+      loop: "{{ users }}"
